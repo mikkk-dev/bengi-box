@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://tgwdd8qoj461"]
+[gd_scene format=3 uid="uid://tgwdd8qoj461"]
 
 [ext_resource type="FontFile" uid="uid://cngwhad1f7egh" path="res://assets/fonts/Minecraft.ttf" id="1_rtnku"]
 [ext_resource type="Script" uid="uid://k58r7lesuxki" path="res://scenes/settings_window.gd" id="2_etmii"]
 [ext_resource type="Texture2D" uid="uid://bbc73voee5j1k" path="res://assets/sprites/ui/minus32.png" id="2_pyh1h"]
 [ext_resource type="Texture2D" uid="uid://b2p8hlvq4arau" path="res://assets/sprites/ui/plus32.png" id="3_bn7f2"]
 [ext_resource type="Texture2D" uid="uid://dw4h4dlb3r4yn" path="res://assets/sprites/ui/checkbox-bg32.png" id="4_3f8js"]
+[ext_resource type="Script" uid="uid://bcfm2r551i7l5" path="res://scenes/settings_button.gd" id="4_30fdw"]
 [ext_resource type="Texture2D" uid="uid://b8hqhnx6nqdhv" path="res://assets/sprites/ui/checkbox-fg32.png" id="5_etmii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyh1h"]
@@ -34,7 +35,7 @@ func _on_pressed() -> void:
 	ConfigManager.set_borderless(texture_rect.visible)
 "
 
-[node name="SettingsWindow" type="Window"]
+[node name="SettingsWindow" type="Window" unique_id=1334275962]
 oversampling_override = 1.0
 title = "Bengi Box Settings"
 initial_position = 4
@@ -46,9 +47,9 @@ theme_override_fonts/title_font = ExtResource("1_rtnku")
 theme_override_font_sizes/title_font_size = 16
 script = ExtResource("2_etmii")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1731286411]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=325055382]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,16 +57,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1189509332]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.12941177, 0.12941177, 0.12941177, 1)
+color = Color(0.14901961, 0.19607843, 0.21960784, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect" unique_id=1008580827]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,27 +75,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer" unique_id=695053526]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 color = Color(0.24313726, 0.15294118, 0.13725491, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer" unique_id=2068986003]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer" unique_id=690129923]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 color = Color(0.24313726, 0.15294118, 0.13725491, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer" unique_id=6879290]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=954051559]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -103,30 +104,31 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=948726117]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1913301395]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1888592476]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Work duration:"
+text = "Dlugosc pracy:"
 label_settings = SubResource("LabelSettings_pyh1h")
 vertical_alignment = 1
 
-[node name="WorkTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="WorkTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=613367888]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("2_pyh1h")
 flat = true
+script = ExtResource("4_30fdw")
 
-[node name="WorkTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="WorkTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=507762632]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
@@ -136,32 +138,34 @@ label_settings = SubResource("LabelSettings_h77l5")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="WorkTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="WorkTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=50779064]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("3_bn7f2")
 flat = true
+script = ExtResource("4_30fdw")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1287322214]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1104749178]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Rest duration:"
+text = "Dlugosc przerwy:"
 label_settings = SubResource("LabelSettings_pyh1h")
 vertical_alignment = 1
 
-[node name="RestTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="RestTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1393466504]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("2_pyh1h")
 flat = true
+script = ExtResource("4_30fdw")
 
-[node name="RestTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="RestTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1831224321]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
@@ -171,32 +175,33 @@ label_settings = SubResource("LabelSettings_h77l5")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="RestTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="RestTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=768491659]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("3_bn7f2")
 flat = true
+script = ExtResource("4_30fdw")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=258774270]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2119599371]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Borderless"
+text = "Okno bez ramki"
 label_settings = SubResource("LabelSettings_pyh1h")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1861040917]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("4_3f8js")
 flat = true
 script = SubResource("GDScript_30fdw")
 
-[node name="BorderlessIcon" type="TextureRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Button"]
+[node name="BorderlessIcon" type="TextureRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Button" unique_id=1432699552]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -213,12 +218,12 @@ mouse_filter = 2
 texture = ExtResource("5_etmii")
 stretch_mode = 2
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer" unique_id=562129286]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 color = Color(0.24313726, 0.15294118, 0.13725491, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer" unique_id=2137118304]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 color = Color(0.24313726, 0.15294118, 0.13725491, 1)

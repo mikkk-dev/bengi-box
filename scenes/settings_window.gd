@@ -18,10 +18,10 @@ func _tween_time_label(label: Label, tween: Tween, dir: int) -> void:
 	
 	tween = get_tree().create_tween() \
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel(true)
-	tween.tween_property(label, "scale", label.scale  * 1.1, 0.3)
-	tween.tween_property(label, "rotation_degrees", label.rotation_degrees  + 15 * dir, 0.3)
+	tween.tween_property(label, "scale", label.scale  * 1.05, 0.3)
+	tween.tween_property(label, "rotation_degrees", label.rotation_degrees  + 5 * dir, 0.3)
 	tween.set_parallel(false)
-	tween.tween_interval(1)
+	tween.tween_interval(0.5)
 	tween.set_parallel(true)
 	tween.tween_property(label, "scale", Vector2.ONE, 0.3)
 	tween.tween_property(label, "rotation_degrees", 0, 0.3)

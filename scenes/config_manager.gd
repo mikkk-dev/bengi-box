@@ -32,11 +32,11 @@ func _ready() -> void:
 func set_borderless(val: bool) -> void:
 	_window.borderless = val
 	if val:
-		_window.size = Vector2(_window.size.x - 8, _window.size.y - 40)
-		_window.position += Vector2i(8, 32)
+		#_window.size = Vector2(_window.size.x - 8, _window.size.y - 40)
+		_window.position += Vector2i(3, 24)
 	else:
-		_window.size = Vector2(_window.size.x + 8, _window.size.y + 40)
-		_window.position -= Vector2i(8, 32)
+		#_window.size = Vector2(_window.size.x + 8, _window.size.y + 40)
+		_window.position -= Vector2i(3, 24)
 
 
 func load_config() -> void:
