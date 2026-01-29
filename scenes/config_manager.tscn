@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsisyjy0b5wkh"]
+
+[ext_resource type="Script" uid="uid://cxqhk5t8ykvr0" path="res://scenes/config_manager.gd" id="1_fucsp"]
+
+[node name="ConfigManager" type="Node"]
+script = ExtResource("1_fucsp")

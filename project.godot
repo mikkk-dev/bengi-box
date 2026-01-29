@@ -1,0 +1,47 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Bengi Box"
+run/main_scene="uid://d3adlm7y1u272"
+config/features=PackedStringArray("4.6", "Mobile")
+boot_splash/bg_color=Color(0.13816993, 0.13816993, 0.13816993, 0)
+boot_splash/use_filter=false
+boot_splash/image="uid://cbg1bufvgafc3"
+config/icon="uid://cbg1bufvgafc3"
+config/windows_native_icon="res://assets/sprites/icon.ico"
+boot_splash/minimum_display_time=50
+
+[autoload]
+
+ConfigManager="*res://scenes/config_manager.tscn"
+
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=384
+window/size/resizable=false
+window/size/transparent=true
+window/size/minimize_disabled=true
+window/size/maximize_disabled=true
+window/subwindows/embed_subwindows=false
+window/per_pixel_transparency/allowed=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+viewport/transparent_background=true

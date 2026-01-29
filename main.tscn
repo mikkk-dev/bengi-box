@@ -1,0 +1,388 @@
+[gd_scene load_steps=42 format=3 uid="uid://d3adlm7y1u272"]
+
+[ext_resource type="Texture2D" uid="uid://dytw340odhpy2" path="res://assets/sprites/bengi/bengi-blink-1.png" id="1_dg77c"]
+[ext_resource type="Script" uid="uid://ducme38d02llb" path="res://main.gd" id="1_seu75"]
+[ext_resource type="Texture2D" uid="uid://bar6nksni4855" path="res://assets/sprites/bengi/bengi-blink-2.png" id="2_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://b16w1nhxptix3" path="res://assets/sprites/bengi/bengi-blink-3.png" id="3_w48qg"]
+[ext_resource type="Texture2D" uid="uid://mqianh847bh3" path="res://assets/sprites/bengi/bengi-blink-4.png" id="4_vivmo"]
+[ext_resource type="Texture2D" uid="uid://b6cdqgg2wfua3" path="res://assets/sprites/bengi/bengi-blink-5.png" id="5_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://di82o5p4hfkyt" path="res://assets/sprites/bengi/bengi-blink-6.png" id="6_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cvxr6jgoah7bn" path="res://assets/sprites/bengi/bengi-idle1.png" id="7_074og"]
+[ext_resource type="Texture2D" uid="uid://17cm3nc53y00" path="res://assets/sprites/bengi/bengi-idle2.png" id="8_cegan"]
+[ext_resource type="Texture2D" uid="uid://bau5rpkpqfe05" path="res://assets/sprites/bengi/bengi-idle3.png" id="9_82xsv"]
+[ext_resource type="Texture2D" uid="uid://xt3npmuqbs16" path="res://assets/sprites/bengi/bengi-idle4.png" id="10_getpj"]
+[ext_resource type="Texture2D" uid="uid://ca6lh4n42oq8c" path="res://assets/sprites/bengi/bengi-idle5.png" id="11_ryguw"]
+[ext_resource type="Texture2D" uid="uid://cb4oag0e7na31" path="res://assets/sprites/bengi/bengi-idle6.png" id="12_d13ii"]
+[ext_resource type="Texture2D" uid="uid://cifalju8p00j5" path="res://assets/sprites/timer/timer1.png" id="13_qsp4k"]
+[ext_resource type="Texture2D" uid="uid://5gps6my0lvb4" path="res://assets/sprites/timer/timer2.png" id="14_kq58d"]
+[ext_resource type="Texture2D" uid="uid://inqecj6kwnyl" path="res://assets/sprites/timer/timer3.png" id="15_seu75"]
+[ext_resource type="Texture2D" uid="uid://1oeyffg00gw0" path="res://assets/sprites/timer/timer4.png" id="16_htxhm"]
+[ext_resource type="Texture2D" uid="uid://cd0srhxmm6b4v" path="res://assets/sprites/timer/timer5.png" id="17_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://d3tn2wyl2dko7" path="res://assets/sprites/timer/timer6.png" id="18_4k2k6"]
+[ext_resource type="Texture2D" uid="uid://qgpvlx2g28r4" path="res://assets/sprites/timer/timer7.png" id="19_0rl1p"]
+[ext_resource type="Texture2D" uid="uid://yi1wxdiffowc" path="res://assets/sprites/timer/timer8.png" id="20_ok6jj"]
+[ext_resource type="Texture2D" uid="uid://b8eswff8ytngd" path="res://assets/sprites/timer/timer9.png" id="21_facbu"]
+[ext_resource type="Texture2D" uid="uid://bucw33c86j4qd" path="res://assets/sprites/timer/timer10.png" id="22_b1qrp"]
+[ext_resource type="Texture2D" uid="uid://cqvo0e34s18it" path="res://assets/sprites/timer/timer11.png" id="23_come4"]
+[ext_resource type="Texture2D" uid="uid://b3c1olkqgd4i0" path="res://assets/sprites/timer/timer12.png" id="24_h8e4i"]
+[ext_resource type="Texture2D" uid="uid://bmm7ol32f6vi" path="res://assets/sprites/timer/timer13.png" id="25_4lmeg"]
+[ext_resource type="Texture2D" uid="uid://jptvdaul30c" path="res://assets/sprites/timer/timer14.png" id="26_0cp0l"]
+[ext_resource type="Texture2D" uid="uid://oca78chea8kw" path="res://assets/sprites/timer/timer15.png" id="27_d2t1y"]
+[ext_resource type="Texture2D" uid="uid://byj6i0nhj2iin" path="res://assets/sprites/timer/timer16.png" id="28_gngh3"]
+[ext_resource type="Texture2D" uid="uid://bual56rhqsumo" path="res://assets/sprites/timer/number-0.png" id="29_0n3wm"]
+[ext_resource type="FontFile" uid="uid://cngwhad1f7egh" path="res://assets/fonts/Minecraft.ttf" id="30_kq58d"]
+[ext_resource type="PackedScene" uid="uid://vxcdvxyoxyhk" path="res://scenes/click_area.tscn" id="31_htxhm"]
+[ext_resource type="AudioStream" uid="uid://c07y8khrhtw4s" path="res://assets/audio/meow-1.mp3" id="33_jq2sk"]
+[ext_resource type="PackedScene" uid="uid://tgwdd8qoj461" path="res://scenes/settings_window.tscn" id="35_0rl1p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1u8w0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dg77c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ycdy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w48qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vivmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2cqfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yaehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_dg77c")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_074og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cegan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_82xsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_getpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ryguw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d13ii")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_jq2sk"]
+resource_name = "Blinker"
+script/source = "extends AnimatedSprite2D
+
+
+@onready var blink_timer: Timer = $BlinkTimer
+
+
+func _on_blink_timer_timeout() -> void:
+	play(\"blink\")
+	blink_timer.wait_time = randi_range(3, 8)
+	blink_timer.start()
+"
+
+[sub_resource type="Animation" id="Animation_0rl1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_4k2k6"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.5, 0.5, 1.5),
+"update": 0,
+"values": [0.0, 3.141592653589793, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(6, 6), Vector2(4, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ok6jj"]
+_data = {
+&"RESET": SubResource("Animation_0rl1p"),
+&"pulse": SubResource("Animation_4k2k6")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnost"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qsp4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kq58d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_seu75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_htxhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jq2sk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4k2k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0rl1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ok6jj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_facbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_b1qrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_come4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_h8e4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4lmeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_0cp0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_d2t1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_gngh3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4k2k6"]
+font = ExtResource("30_kq58d")
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_seu75")
+
+[node name="Bengi" type="AnimatedSprite2D" parent="."]
+position = Vector2(128, 162)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1u8w0")
+animation = &"blink"
+autoplay = "blink"
+frame = 6
+frame_progress = 1.0
+script = SubResource("GDScript_jq2sk")
+
+[node name="BlinkTimer" type="Timer" parent="Bengi"]
+one_shot = true
+autostart = true
+
+[node name="BengiAnimator" type="AnimationPlayer" parent="Bengi"]
+libraries = {
+&"": SubResource("AnimationLibrary_ok6jj")
+}
+speed_scale = 1.3
+
+[node name="Timer" type="AnimatedSprite2D" parent="."]
+position = Vector2(128, 292)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qnost")
+autoplay = "default"
+frame_progress = 0.6583181
+
+[node name="Minute1" type="Sprite2D" parent="Timer"]
+position = Vector2(-18, 0)
+texture = ExtResource("29_0n3wm")
+
+[node name="Minute2" type="Sprite2D" parent="Timer"]
+position = Vector2(-9, 0)
+texture = ExtResource("29_0n3wm")
+
+[node name="Second1" type="Sprite2D" parent="Timer"]
+position = Vector2(9, 0)
+texture = ExtResource("29_0n3wm")
+
+[node name="Second2" type="Sprite2D" parent="Timer"]
+position = Vector2(18, 0)
+texture = ExtResource("29_0n3wm")
+
+[node name="ClickArea" parent="Timer" instance=ExtResource("31_htxhm")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+
+[node name="ActivityLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+text = "Kliknij zegar"
+label_settings = SubResource("LabelSettings_4k2k6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24313726, 0.15294118, 0.13725491, 1)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("30_kq58d")
+theme_override_font_sizes/font_size = 16
+text = "⚙️"
+flat = true
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("30_kq58d")
+theme_override_font_sizes/font_size = 16
+text = "⏸️"
+flat = true
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("30_kq58d")
+theme_override_font_sizes/font_size = 16
+text = "❌"
+flat = true
+
+[node name="PomodoroTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="UpdateTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="MeowPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_jq2sk")
+
+[node name="SettingsWindow" parent="." instance=ExtResource("35_0rl1p")]
+visible = false
+
+[connection signal="timeout" from="Bengi/BlinkTimer" to="Bengi" method="_on_blink_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control2/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control2/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="PomodoroTimer" to="." method="_on_pomodoro_timer_timeout"]
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]
