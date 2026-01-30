@@ -155,7 +155,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
 shader = ExtResource("18_0odxb")
-shader_parameter/is_inverted = false
+shader_parameter/is_clicked = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_4k2k6"]
 font = ExtResource("30_kq58d")
@@ -164,19 +164,19 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
 shader = ExtResource("18_0odxb")
-shader_parameter/is_inverted = false
+shader_parameter/is_clicked = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
 shader = ExtResource("18_0odxb")
-shader_parameter/is_inverted = false
+shader_parameter/is_clicked = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
 shader = ExtResource("18_0odxb")
-shader_parameter/is_inverted = false
+shader_parameter/is_clicked = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
 shader = ExtResource("18_0odxb")
-shader_parameter/is_inverted = false
+shader_parameter/is_clicked = false
 
 [node name="Main" type="Node2D" unique_id=1353710124]
 self_modulate = Color(1, 1, 1, 0)
@@ -208,6 +208,16 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 384.0
+
+[node name="FullBackground" type="ColorRect" parent="CanvasLayer/Container" unique_id=1586906784]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Container" unique_id=885024018]
 layout_mode = 1

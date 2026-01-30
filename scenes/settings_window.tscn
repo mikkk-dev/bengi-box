@@ -3,10 +3,11 @@
 [ext_resource type="FontFile" uid="uid://cngwhad1f7egh" path="res://assets/fonts/Minecraft.ttf" id="1_rtnku"]
 [ext_resource type="Script" uid="uid://k58r7lesuxki" path="res://scenes/settings_window.gd" id="2_etmii"]
 [ext_resource type="Texture2D" uid="uid://bbc73voee5j1k" path="res://assets/sprites/ui/minus32.png" id="2_pyh1h"]
+[ext_resource type="Shader" uid="uid://78k51a62h7pp" path="res://assets/shaders/click.gdshader" id="3_1n3y8"]
 [ext_resource type="Texture2D" uid="uid://b2p8hlvq4arau" path="res://assets/sprites/ui/plus32.png" id="3_bn7f2"]
 [ext_resource type="Texture2D" uid="uid://dw4h4dlb3r4yn" path="res://assets/sprites/ui/checkbox-bg32.png" id="4_3f8js"]
-[ext_resource type="Script" uid="uid://bcfm2r551i7l5" path="res://scenes/settings_button.gd" id="4_30fdw"]
 [ext_resource type="Texture2D" uid="uid://b8hqhnx6nqdhv" path="res://assets/sprites/ui/checkbox-fg32.png" id="5_etmii"]
+[ext_resource type="PackedScene" uid="uid://65v6tw6jp5l6" path="res://scenes/color_inverter.tscn" id="5_scrjx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyh1h"]
 font = ExtResource("1_rtnku")
@@ -16,6 +17,10 @@ outline_size = 8
 outline_color = Color(0.12941177, 0.12941177, 0.12941177, 1)
 shadow_size = 0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf5gx"]
+shader = ExtResource("3_1n3y8")
+shader_parameter/is_clicked = false
+
 [sub_resource type="LabelSettings" id="LabelSettings_h77l5"]
 font = ExtResource("1_rtnku")
 font_size = 32
@@ -23,16 +28,56 @@ font_color = Color(0.25882354, 0.7411765, 0.25490198, 1)
 outline_size = 8
 outline_color = Color(0.12941177, 0.12941177, 0.12941177, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlphg"]
+shader = ExtResource("3_1n3y8")
+shader_parameter/is_clicked = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ppdp"]
+shader = ExtResource("3_1n3y8")
+shader_parameter/is_clicked = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtbnn"]
+shader = ExtResource("3_1n3y8")
+shader_parameter/is_clicked = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n3y8"]
+shader = ExtResource("3_1n3y8")
+shader_parameter/is_clicked = false
+
 [sub_resource type="GDScript" id="GDScript_30fdw"]
 script/source = "extends Button
 
 
-@onready var texture_rect: TextureRect = $BorderlessIcon
+@onready var _texture_rect: TextureRect = %BorderlessIcon
 
 
 func _on_pressed() -> void:
-	texture_rect.visible = !texture_rect.visible
-	ConfigManager.set_borderless(texture_rect.visible)
+	_texture_rect.visible = !_texture_rect.visible
+	ConfigManager.set_borderless(_texture_rect.visible)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scrjx"]
+shader = ExtResource("3_1n3y8")
+shader_parameter/is_clicked = false
+
+[sub_resource type="GDScript" id="GDScript_1n3y8"]
+script/source = "extends Button
+
+
+@onready var _texture_rect: TextureRect = %BGEnabledIcon
+
+
+func _on_pressed() -> void:
+	_texture_rect.visible = !_texture_rect.visible
+	ConfigManager.background_enabled = _texture_rect.visible
+"
+
+[sub_resource type="GDScript" id="GDScript_scrjx"]
+script/source = "extends ColorPickerButton
+
+
+func _on_color_changed(new_color: Color) -> void:
+	ConfigManager.background_color = new_color
 "
 
 [node name="SettingsWindow" type="Window" unique_id=1334275962]
@@ -75,7 +120,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer" unique_id=695053526]
+[node name="FullBackground" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer" unique_id=695053526]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 color = Color(0.24313726, 0.15294118, 0.13725491, 1)
@@ -109,26 +155,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1913301395]
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1913301395]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1888592476]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1" unique_id=1888592476]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dlugosc pracy:"
 label_settings = SubResource("LabelSettings_pyh1h")
 vertical_alignment = 1
 
-[node name="WorkTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=613367888]
+[node name="WorkTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1" unique_id=613367888]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tf5gx")
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("2_pyh1h")
 flat = true
-script = ExtResource("4_30fdw")
 
-[node name="WorkTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=507762632]
+[node name="ColorInverter" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1/WorkTimeMinusBtn" unique_id=849807549 instance=ExtResource("5_scrjx")]
+
+[node name="WorkTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1" unique_id=507762632]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
@@ -138,34 +186,38 @@ label_settings = SubResource("LabelSettings_h77l5")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="WorkTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=50779064]
+[node name="WorkTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1" unique_id=50779064]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vlphg")
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("3_bn7f2")
 flat = true
-script = ExtResource("4_30fdw")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1287322214]
+[node name="ColorInverter" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1/WorkTimePlusBtn" unique_id=1621151281 instance=ExtResource("5_scrjx")]
+
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1287322214]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1104749178]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2" unique_id=1104749178]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dlugosc przerwy:"
 label_settings = SubResource("LabelSettings_pyh1h")
 vertical_alignment = 1
 
-[node name="RestTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1393466504]
+[node name="RestTimeMinusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2" unique_id=1393466504]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2ppdp")
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("2_pyh1h")
 flat = true
-script = ExtResource("4_30fdw")
 
-[node name="RestTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1831224321]
+[node name="ColorInverter" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2/RestTimeMinusBtn" unique_id=1414412316 instance=ExtResource("5_scrjx")]
+
+[node name="RestTimeLabel" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2" unique_id=1831224321]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
@@ -175,33 +227,36 @@ label_settings = SubResource("LabelSettings_h77l5")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="RestTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=768491659]
+[node name="RestTimePlusBtn" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2" unique_id=768491659]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_xtbnn")
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("3_bn7f2")
 flat = true
-script = ExtResource("4_30fdw")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=258774270]
+[node name="ColorInverter" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2/RestTimePlusBtn" unique_id=236408282 instance=ExtResource("5_scrjx")]
+
+[node name="Row3" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=258774270]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2119599371]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row3" unique_id=2119599371]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Okno bez ramki"
 label_settings = SubResource("LabelSettings_pyh1h")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1861040917]
+[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row3" unique_id=1861040917]
+material = SubResource("ShaderMaterial_1n3y8")
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("4_3f8js")
 flat = true
 script = SubResource("GDScript_30fdw")
 
-[node name="BorderlessIcon" type="TextureRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Button" unique_id=1432699552]
+[node name="BorderlessIcon" type="TextureRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row3/Button" unique_id=1432699552]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -218,6 +273,65 @@ mouse_filter = 2
 texture = ExtResource("5_etmii")
 stretch_mode = 2
 
+[node name="ColorInverter" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row3/Button" unique_id=621595825 instance=ExtResource("5_scrjx")]
+
+[node name="Row4" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2109857929]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row4" unique_id=498795222]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kolorowe tlo"
+label_settings = SubResource("LabelSettings_pyh1h")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row4" unique_id=2031707785]
+material = SubResource("ShaderMaterial_scrjx")
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("4_3f8js")
+flat = true
+script = SubResource("GDScript_1n3y8")
+
+[node name="BGEnabledIcon" type="TextureRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row4/Button" unique_id=2091158620]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_etmii")
+stretch_mode = 2
+
+[node name="ColorInverter" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row4/Button" unique_id=2011628828 instance=ExtResource("5_scrjx")]
+
+[node name="Row5" type="HBoxContainer" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1744006723]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row5" unique_id=460208856]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kolor tla"
+label_settings = SubResource("LabelSettings_pyh1h")
+vertical_alignment = 1
+
+[node name="BGColorPicker" type="ColorPickerButton" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row5" unique_id=588008062]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+icon = ExtResource("4_3f8js")
+color = Color(0.34580213, 0.54781777, 1, 1)
+script = SubResource("GDScript_scrjx")
+
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer" unique_id=562129286]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
@@ -228,8 +342,10 @@ custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 color = Color(0.24313726, 0.15294118, 0.13725491, 1)
 
-[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/WorkTimeMinusBtn" to="." method="_on_work_time_minus_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/WorkTimePlusBtn" to="." method="_on_work_time_plus_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/RestTimeMinusBtn" to="." method="_on_rest_time_minus_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/RestTimePlusBtn" to="." method="_on_rest_time_plus_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Button" to="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1/WorkTimeMinusBtn" to="." method="_on_work_time_minus_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row1/WorkTimePlusBtn" to="." method="_on_work_time_plus_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2/RestTimeMinusBtn" to="." method="_on_rest_time_minus_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row2/RestTimePlusBtn" to="." method="_on_rest_time_plus_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row3/Button" to="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row3/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row4/Button" to="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row4/Button" method="_on_pressed"]
+[connection signal="color_changed" from="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row5/BGColorPicker" to="CanvasLayer/Control/ColorRect/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Row5/BGColorPicker" method="_on_color_changed"]

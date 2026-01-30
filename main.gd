@@ -35,6 +35,7 @@ var _current_timer_mode: TimerMode = TimerMode.WORK
 @onready var update_timer: Timer = $UpdateTimer
 @onready var meow_player: AudioStreamPlayer2D = $MeowPlayer
 
+@onready var full_background: ColorRect = %FullBackground
 @onready var activity_label: Label = %ActivityLabel
 @onready var bengi_animator: AnimationPlayer = $Bengi/BengiAnimator
 @onready var settings_window: Window = $SettingsWindow
@@ -42,7 +43,16 @@ var _current_timer_mode: TimerMode = TimerMode.WORK
 
 func _ready() -> void:
 	settings_window.close_requested.connect(settings_window.hide)
-	pomodoro_timer.wait_time = max(ConfigManager.work_time * 60, 2) 
+	pomodoro_timer.wait_time = max(ConfigManager.work_time * 60, 2)
+	full_background.color = ConfigManager.background_color
+	full_background.visible = ConfigManager.background_enabled
+	ConfigManager.config_updated.connect(_on_config_update)
+
+
+func _on_config_update() -> void:
+	full_background.visible = ConfigManager.background_enabled
+	if full_background.visible:
+		full_background.color = ConfigManager.background_color
 
 
 func _on_timer_click_area_click() -> void:

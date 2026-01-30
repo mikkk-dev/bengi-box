@@ -31,6 +31,8 @@ func _update_settings_values() -> void:
 	%WorkTimeLabel.text = str(ConfigManager.work_time)
 	%RestTimeLabel.text = str(ConfigManager.rest_time)
 	%BorderlessIcon.visible = ConfigManager.borderless
+	%BGEnabledIcon.visible = ConfigManager.background_enabled
+	%BGColorPicker.color = ConfigManager.background_color
 
 
 func _on_work_time_minus_btn_pressed() -> void:
