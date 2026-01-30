@@ -13,7 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://xt3npmuqbs16" path="res://assets/sprites/bengi/bengi-idle4.png" id="10_getpj"]
 [ext_resource type="Texture2D" uid="uid://ca6lh4n42oq8c" path="res://assets/sprites/bengi/bengi-idle5.png" id="11_ryguw"]
 [ext_resource type="Texture2D" uid="uid://cb4oag0e7na31" path="res://assets/sprites/bengi/bengi-idle6.png" id="12_d13ii"]
-[ext_resource type="Script" uid="uid://bcfm2r551i7l5" path="res://scenes/settings_button.gd" id="19_1u8w0"]
+[ext_resource type="Shader" uid="uid://78k51a62h7pp" path="res://assets/shaders/click.gdshader" id="18_0odxb"]
+[ext_resource type="PackedScene" uid="uid://65v6tw6jp5l6" path="res://scenes/color_inverter.tscn" id="21_lswn8"]
 [ext_resource type="Texture2D" uid="uid://bual56rhqsumo" path="res://assets/sprites/timer/number-0.png" id="29_0n3wm"]
 [ext_resource type="FontFile" uid="uid://cngwhad1f7egh" path="res://assets/fonts/Minecraft.ttf" id="30_kq58d"]
 [ext_resource type="Texture2D" uid="uid://dbjm7dl3ac6hg" path="res://assets/sprites/timer/timer_bg.png" id="33_0rl1p"]
@@ -152,10 +153,30 @@ _data = {
 &"pulse": SubResource("Animation_4k2k6")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
+shader = ExtResource("18_0odxb")
+shader_parameter/is_inverted = false
+
 [sub_resource type="LabelSettings" id="LabelSettings_4k2k6"]
 font = ExtResource("30_kq58d")
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
+shader = ExtResource("18_0odxb")
+shader_parameter/is_inverted = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
+shader = ExtResource("18_0odxb")
+shader_parameter/is_inverted = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
+shader = ExtResource("18_0odxb")
+shader_parameter/is_inverted = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
+shader = ExtResource("18_0odxb")
+shader_parameter/is_inverted = false
 
 [node name="Main" type="Node2D" unique_id=1353710124]
 self_modulate = Color(1, 1, 1, 0)
@@ -214,6 +235,7 @@ layout_mode = 2
 
 [node name="TimerImg" type="TextureRect" parent="CanvasLayer/Container/VBoxContainer/Control2" unique_id=1430426126]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_qsp4k")
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 128.0
@@ -338,6 +360,7 @@ theme_override_constants/margin_right = 16
 layout_mode = 2
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer" unique_id=689960873]
+material = SubResource("ShaderMaterial_lswn8")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -347,9 +370,11 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("35_h8e4i")
 flat = true
 icon_alignment = 1
-script = ExtResource("19_1u8w0")
+
+[node name="ColorInverter" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer/SettingsButton" unique_id=849807549 instance=ExtResource("21_lswn8")]
 
 [node name="NextButton" type="Button" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer" unique_id=1709526233]
+material = SubResource("ShaderMaterial_0odxb")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -359,10 +384,12 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("36_4lmeg")
 flat = true
 icon_alignment = 1
-script = ExtResource("19_1u8w0")
+
+[node name="ColorInverter" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer/NextButton" unique_id=822325338 instance=ExtResource("21_lswn8")]
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer" unique_id=1446544978]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_a6jrf")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -372,9 +399,11 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("37_0cp0l")
 flat = true
 icon_alignment = 1
-script = ExtResource("19_1u8w0")
+
+[node name="ColorInverter" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer/PauseButton" unique_id=263523763 instance=ExtResource("21_lswn8")]
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer" unique_id=348313569]
+material = SubResource("ShaderMaterial_xuqvo")
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -383,7 +412,8 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("38_d2t1y")
 flat = true
 icon_alignment = 1
-script = ExtResource("19_1u8w0")
+
+[node name="ColorInverter" parent="CanvasLayer/Container/VBoxContainer/Control3/VBoxContainer/Bottom/MarginContainer/HBoxContainer/ExitButton" unique_id=121677292 instance=ExtResource("21_lswn8")]
 
 [node name="PomodoroTimer" type="Timer" parent="." unique_id=1892244199]
 wait_time = 3.0

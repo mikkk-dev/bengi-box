@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://65v6tw6jp5l6"]
+
+[ext_resource type="Script" uid="uid://ciuwbkp05d3x1" path="res://scenes/color_inverter.gd" id="1_mlfa7"]
+
+[node name="ColorInverter" type="Node" unique_id=849807549]
+script = ExtResource("1_mlfa7")

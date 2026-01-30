@@ -46,7 +46,6 @@ func _ready() -> void:
 
 
 func _on_timer_click_area_click() -> void:
-	print("bajo")
 	meow_player.stop()
 	activity_label.text = "Praca" if _current_timer_mode == TimerMode.WORK else "Przerwa"
 	
@@ -57,9 +56,9 @@ func _on_timer_click_area_click() -> void:
 			update_timer.start()
 		pomodoro_timer.start()
 		
-		var tween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
-		tween.tween_property(timer_sprite, "scale:x", 0.9, 0.1)
-		tween.tween_property(timer_sprite, "scale:x", 1, 0.3)
+		timer_sprite.material.set("shader_parameter/is_clicked", true)
+		await get_tree().create_timer(0.2).timeout
+		timer_sprite.material.set("shader_parameter/is_clicked", false)
 
 
 func _on_update_timer_timeout() -> void:
@@ -88,7 +87,6 @@ func _on_update_timer_timeout() -> void:
 func _on_pomodoro_timer_timeout() -> void:
 	pomodoro_timer.stop()
 	bengi_animator.play("pulse")
-	print("jajo")
 	meow_player.play()
 	get_window().always_on_top = true
 	activity_label.text = "Kliknij zegar"
